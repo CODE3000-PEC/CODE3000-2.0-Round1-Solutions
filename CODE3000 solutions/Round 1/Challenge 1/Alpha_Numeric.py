@@ -1,45 +1,22 @@
-#include<stdio.h>
-int main()
-{
+def fun(n):
+    num = list(map(str,range(1,n+1)))
+    alpha = list(map(chr,range(97,97+n)))
 
-    int n;
-    scanf("%d",&n);
-    int total_len = n;
-    if (n>9){
-        int temp = n-9;
+    s = ''.join(num) + ''.join(alpha[::-1])
 
-        total_len = 9+(temp*2);
+    length = len(''.join(num))
+    length1 = len(''.join(alpha[::-1]))
 
-    }
-    total_len = total_len+n;
-   // printf("%d\n",total_len);
-    int i ,j,z,h;
-    int num = 97;
-    for( i=0;i<n;i++)
-    {
-        for( j=0;j<i+1;j++)
-        {
+    
+    l = ['' for i in range(n)]
+    l[-1] = s
+    for i in range(n-2,-1,-1):
+        num.pop()
+        alpha.pop()
+        l[i] = ''.join(num).ljust(length) + ''.join(alpha[::-1]).rjust(length1) 
 
-            printf("%d",j+1);
+    print(*l,sep='\n')
+    #return l
 
-        }
-        if ((j+1)>10){
-            total_len-=1;
-        }
-        for(z=0;z<total_len-(2*j);z++)
-        {
+fun(int(input()))
 
-            printf(" ");
-
-        }
-        for(h=0;h<i+1;h++){
-            printf("%c",num-h);
-
-        }
-        num++;
-        printf("\n");
-
-    }
-
-
-}
